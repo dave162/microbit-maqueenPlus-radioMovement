@@ -17,12 +17,12 @@ basic.forever(function () {
     tilt = input.rotation(Rotation.Pitch)
     acceleration = pins.map(
     tilt,
-    0,
-    255,
+    -90,
+    90,
     0,
     2046
     )
-    if (tilt < 500 && tilt > 0) {
+    if (tilt < 30 && tilt > -30) {
         radio.sendString("a")
     } else {
         radio.sendNumber(1)
