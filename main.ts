@@ -1,5 +1,9 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, acceleration)
+    if (receivedNumber == 1) {
+        DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, acceleration)
+    } else if (receivedNumber == 2) {
+        DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CCW, acceleration)
+    }
 })
 radio.onReceivedString(function (receivedString) {
     DFRobotMaqueenPlus.mototStop(Motors.ALL)
@@ -24,7 +28,9 @@ basic.forever(function () {
     )
     if (tilt < 30 && tilt > -30) {
         radio.sendString("a")
-    } else {
+    } else if (tilt > 30) {
         radio.sendNumber(1)
+    } else {
+        radio.sendNumber(2)
     }
 })
