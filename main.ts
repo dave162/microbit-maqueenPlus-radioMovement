@@ -8,6 +8,8 @@ radio.onReceivedNumber(function (receivedNumber) {
 radio.onReceivedString(function (receivedString) {
     DFRobotMaqueenPlus.mototStop(Motors.ALL)
 })
+let acceleration = 0
+let tilt = 0
 basic.showLeds(`
     . . . . .
     . # . # .
@@ -16,7 +18,14 @@ basic.showLeds(`
     . . . . .
     `)
 basic.forever(function () {
-    let tilt = 0
+    tilt = input.rotation(Rotation.Pitch)
+    acceleration = pins.map(
+    tilt,
+    -90,
+    90,
+    0,
+    1024
+    )
     if (tilt < 30 && tilt > -30) {
         radio.sendString("a")
     } else if (tilt > 30) {
