@@ -20,9 +20,9 @@ basic.forever(function () {
     0,
     255,
     0,
-    1023
+    2046
     )
-    if (tilt < 100 && tilt > 0) {
+    if (tilt < 500 && tilt > 0) {
         radio.sendString("a")
     } else {
         radio.sendNumber(1)
