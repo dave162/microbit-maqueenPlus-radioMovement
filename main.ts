@@ -1,7 +1,7 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    if (tilt > 100 && tilt < 0) {
+    if (tilt < 100 && tilt > 0) {
         DFRobotMaqueenPlus.mototStop(Motors.ALL)
-    } else {
+    } else if (tilt < 100) {
         DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, acceleration)
     }
 })

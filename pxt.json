@@ -1,5 +1,5 @@
 {
-    "name": "carSpeed",
+    "name": "carSpeedV2",
     "description": "",
     "dependencies": {
         "core": "*",
