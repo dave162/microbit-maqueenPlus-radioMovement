@@ -38,7 +38,5 @@ basic.forever(function () {
         radio.sendNumber(2)
     } else if (direction > 60) {
         radio.sendNumber(3)
-    } else {
-    	
     }
 })
