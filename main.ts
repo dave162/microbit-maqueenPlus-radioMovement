@@ -1,15 +1,11 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    if (tilt < 100 && tilt > 0) {
-        DFRobotMaqueenPlus.mototStop(Motors.ALL)
-    } else if (tilt < 100) {
-        DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, acceleration)
-    }
+    DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, acceleration)
 })
-input.onGesture(Gesture.TiltRight, function () {
-    radio.sendNumber(1)
+radio.onReceivedString(function (receivedString) {
+    DFRobotMaqueenPlus.mototStop(Motors.ALL)
 })
-let acceleration = 0
 let tilt = 0
+let acceleration = 0
 basic.showLeds(`
     . . . . .
     . # . # .
@@ -26,4 +22,9 @@ basic.forever(function () {
     0,
     1023
     )
+    if (tilt < 100 && tilt > 0) {
+        radio.sendString("a")
+    } else {
+        radio.sendNumber(1)
+    }
 })
